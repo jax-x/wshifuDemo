@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
-import { Upload,Descriptions  } from 'antd'
+import { Upload,Descriptions,Modal  } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
+
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
 class Uploadpic extends Component {
+  state={
+    fileList:[],
+    previewVisible: false,
+    previewImage: '',
+    previewTitle: '',
+  }
     componentDidMount(){
         console.log(this.props.history.location.state,'参数');
     }
 
-    handlePreview = async file => {
+    handlePreview = async file => { 
         if (!file.url && !file.preview) {
           file.preview = await getBase64(file.originFileObj);
         }
@@ -19,17 +34,20 @@ class Uploadpic extends Component {
       };
     
       handleChange = ({ fileList }) => this.setState({ fileList });
-
+      handleCancel = () => this.setState({ previewVisible: false });
+      beforeUpload=file=>{
+       console.log(file,'文件'); 
+      }
     render() {
         const { msg } = this.props.history.location.state
-        const fileList = []
+        const { fileList,previewVisible,previewImage,previewTitle  } = this.state
         const uploadButton = (
             <div>
               <PlusOutlined />
-              <div style={{ marginTop: 8 }}>Upload</div>
+              <div style={{ marginTop: 8 }}>上传</div>
             </div>
           );
-        console.log(msg,'kkkkkkkk');
+        console.log(msg,'kkkkkkkk'); 
         return (
             <div style={{ padding:30 }}>
                 <Descriptions title="详情信息">
@@ -43,9 +61,18 @@ class Uploadpic extends Component {
                     fileList={fileList}
                     onPreview={this.handlePreview}
                     onChange={this.handleChange}
+                    beforeUpload={this.beforeUpload}
                 >
-                    {fileList.length >= 8 ? null : uploadButton}
+                    {fileList.length >= 4 ? null : uploadButton}
                 </Upload>
+                <Modal
+                  visible={previewVisible}
+                  title={previewTitle}
+                  footer={null}
+                  onCancel={this.handleCancel}
+                >
+                  <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                </Modal>
             </div>
         );
     }

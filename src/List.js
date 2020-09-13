@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, Form,Checkbox,Table,Card,Upload  } from 'antd'
+import { Button,Table,Card  } from 'antd'
 import { connect } from 'react-redux'
 @connect(
     (state) => state,
