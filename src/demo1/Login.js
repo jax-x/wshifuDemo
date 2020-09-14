@@ -14,9 +14,8 @@ import ajax from '../utils/request'
 class Login extends Component {
     componentDidMount(){
         ajax({
-            method:'post',
+            method:'get',
             url:'http://192.168.1.7:3000/project/542/interface/api',
-            async: true,
             success: (res)=>{
                 console.log(res,'请求数据');
             }

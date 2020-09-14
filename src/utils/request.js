@@ -1,7 +1,7 @@
 function ajax(options) {
     var ajax = new XMLHttpRequest();
 
-    ajax.open(options.method, options.url, false)
+    ajax.open(options.method, options.url, true)
 
     ajax.send()
 
