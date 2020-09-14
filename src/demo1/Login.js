@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Input, Button, Form,Checkbox, } from 'antd'
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import ajax from '../utils/request' 
 @connect(
   (state) => state,
   (dispatch) => ({
@@ -11,6 +12,17 @@ import 'antd/dist/antd.css';
 )
 
 class Login extends Component {
+    componentDidMount(){
+        ajax({
+            method:'post',
+            url:'http://192.168.1.7:3000/project/542/interface/api',
+            async: true,
+            success: (res)=>{
+                console.log(res,'请求数据');
+            }
+        })
+    }
+
     login=()=>{}
     render() {
         const layout = {

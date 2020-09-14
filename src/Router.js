@@ -1,8 +1,8 @@
 import React from 'react';
 import {HashRouter, Route, Switch,BrowserRouter} from 'react-router-dom';
-import Login from '../src/Login';
-import Pic from '../src/Uploadpic';
-import List from '../src/List';
+import Login from '../src/demo1/Login';
+import Pic from '../src/demo1/Uploadpic';
+import List from '../src/demo1/List';
 
 
 
