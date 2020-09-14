@@ -1,19 +1,35 @@
-function ajax(options) {
-    var ajax = new XMLHttpRequest();
-
-    ajax.open(options.method, options.url, true)
-
-    ajax.send()
-
-    ajax.onreadystatechange = function() {
-        var data = JSON.parse(ajax.responseText);
-        if(ajax.readystate === 4 && ajax.status === 200) {
-            // 传递出响应的数据
-            options.success(data)
-        } else if(ajax.readystate === 4 && ajax.status !== 200) {
-            options.fail(data)
+function ajax(options){
+    var xhr = null;
+    var params = formsParams(options.data);
+    //创建对象
+    if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest()
+    } else {
+        // eslint-disable-next-line no-undef
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    // 连接
+    if(options.type === "GET"){
+        xhr.open(options.type,options.url + "?"+ params,options.async);
+        xhr.send(null)
+    } else if(options.type == "POST"){
+        xhr.open(options.type,options.url,options.async);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send(params);
+    }
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            options.success(xhr.responseText);
         }
     }
+    function formsParams(data){
+        var arr = [];
+        for(var prop in data){
+            arr.push(prop + "=" + data[prop]);
+        }
+        return arr.join("&");
+    }
 }
+
 
 export default ajax

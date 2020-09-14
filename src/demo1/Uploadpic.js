@@ -63,8 +63,15 @@ class Uploadpic extends Component {
         });
       };
     
-      handleChange = ({ fileList }) => this.setState({ fileList });
+      handleChange = ({ fileList }) => {
+        console.log(fileList,'0000')
+        this.setState({ fileList });
+
+      }
+
       handleCancel = () => this.setState({ previewVisible: false });
+
+
       beforeUpload=file=>{
        console.log(file,'文件'); 
       }
@@ -135,7 +142,7 @@ class Uploadpic extends Component {
                       rules={[
                         {
                           required: true,
-                          message: 'Please input your username!',
+                          message: '请添加图片',
                         },
                       ]}
                   >
@@ -149,9 +156,7 @@ class Uploadpic extends Component {
                     >
                       {fileList.length >= 4 ? null : uploadButton}
                     </Upload>
-                      
                   </Form.Item>
-
                   <Form.Item
                     label="服务类目"
                     name="username"

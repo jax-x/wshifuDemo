@@ -13,14 +13,23 @@ import ajax from '../utils/request'
 
 class Login extends Component {
     componentDidMount(){
-        ajax({
-            method:'get',
-            url:'http://192.168.1.7:3000/project/542/interface/api',
-            success: (res)=>{
-                console.log(res,'请求数据');
+        // ajax({
+        //     method:'get',
+        //     url:'http://192.168.1.7:3000/project/542/interface/api',
+        //     success: (res)=>{
+        //         console.log(res,'请求数据');
+        //     }
+        // })        
+            ajax({
+                url : "http://192.168.1.7:3000/project/542/interface/api",  // url---->地址
+                type : "POST",   // type ---> 请求方式
+                async : true,   // async----> 同步：false，异步：true 
+                success : function(data){   //返回接受信息
+                    console.log(data,'数据');
+                }
+
+                })
             }
-        })
-    }
 
     login=()=>{}
     render() {
