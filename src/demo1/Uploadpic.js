@@ -63,9 +63,11 @@ class Uploadpic extends Component {
         });
       };
     
-      handleChange = ({ fileList }) => {
+      handleChange = (fileList ) => {
         console.log(fileList,'0000')
-        this.setState({ fileList });
+        this.setState({ 
+          fileList
+        });
 
       }
 
@@ -117,6 +119,13 @@ class Uploadpic extends Component {
           { name:'窗帘',key:'chuanglian' },
           { name:'健身器材',key:'jianshen' }
         ] 
+        const normFile = e => {
+          console.log('Upload event:', e);
+          if (Array.isArray(e)) {
+            return e;
+          }
+          return e && e.fileList;
+        };
         return (
             <div style={{ padding:30 }}>
                 <Descriptions title="详情信息">
@@ -137,21 +146,24 @@ class Uploadpic extends Component {
                   {...layout}
                 >
                   <Form.Item
-                    label="服务类目"
-                    name="username"
-                      rules={[
-                        {
-                          required: true,
-                          message: '请添加图片',
-                        },
-                      ]}
+                    label="图片上传"
+                    name="pic"
+                    rules={[
+                      {
+                        required: true,
+                        message: '请添加图片',
+                      },
+                    ]}
+                    initialValue={fileList}
+                    getValueFromEvent={normFile}
                   >
                     <Upload
-                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      action="/upload.do"
                       listType="picture-card"
-                      fileList={fileList}
-                      onPreview={this.handlePreview}
-                      onChange={this.handleChange}
+                      multiple
+                      // fileList={fileList}
+                      // onPreview={this.handlePreview}
+                      // onChange={this.handleChange}
                       beforeUpload={this.beforeUpload}
                     >
                       {fileList.length >= 4 ? null : uploadButton}
@@ -163,7 +175,7 @@ class Uploadpic extends Component {
                       rules={[
                         {
                           required: true,
-                          message: 'Please input your username!',
+                          message: '请选择!',
                         },
                       ]}
                   >
@@ -188,7 +200,7 @@ class Uploadpic extends Component {
                       rules={[
                         {
                           required: true,
-                          message: 'Please input your username!',
+                          message: '请选择!',
                         },
                       ]}
                   >

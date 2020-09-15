@@ -41,7 +41,6 @@ class Login extends Component {
             wrapperCol: { offset: 8, span: 16 },
           };
 
-        console.log(this.props, 'props');
         return (
             <div style={{ padding: 30 }}>
                 <Form

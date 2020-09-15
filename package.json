@@ -154,5 +154,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12",
+    "webpack-command": "^0.5.0"
   }
 }

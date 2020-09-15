@@ -53,6 +53,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
+  console.log(webpackEnv,'webpackEnv');
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
 
@@ -92,7 +93,7 @@ module.exports = function(webpackEnv) {
           // Necessary for external CSS imports to work
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
-          plugins: () => [
+          plugins: () => [ 
             require('postcss-flexbugs-fixes'),
             require('postcss-preset-env')({
               autoprefixer: {

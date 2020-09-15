@@ -5,20 +5,19 @@ function ajax(options){
     if(window.XMLHttpRequest){
         xhr = new XMLHttpRequest()
     } else {
-        // eslint-disable-next-line no-undef
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        // xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
     // 连接
     if(options.type === "GET"){
         xhr.open(options.type,options.url + "?"+ params,options.async);
         xhr.send(null)
-    } else if(options.type == "POST"){
+    } else if(options.type === "POST"){
         xhr.open(options.type,options.url,options.async);
         xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         xhr.send(params);
     }
     xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
+        if(xhr.readyState === 4 && xhr.status === 200){
             options.success(xhr.responseText);
         }
     }
