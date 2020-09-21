@@ -6,7 +6,8 @@ import {
   Form,
   Input,
   Select,
-  Button
+  Button,
+  message
   } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -63,10 +64,10 @@ class Uploadpic extends Component {
         });
       };
     
-      handleChange = (fileList ) => {
+      handleChange = (fileList) => {
         console.log(fileList,'0000')
         this.setState({ 
-          fileList
+          fileList:fileList.fileList
         });
 
       }
@@ -75,8 +76,38 @@ class Uploadpic extends Component {
 
 
       beforeUpload=file=>{
-       console.log(file,'文件'); 
+       console.log(file,'上传之前的文件');
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+          message.error(file.name + "图片大小超出限制，请修改后重新上传", 3);
+          return isLt2M;
+        }
+        const isSize = this.isSize(file);
+        return isLt2M && isSize;
       }
+
+      isSize = file => {
+        return new Promise((resolve, reject) => {
+          let width = 720;
+          let height = 649;
+          let _URL = window.URL || window.webkitURL;
+          let img = new Image();
+          img.onload = function() {
+            console.log(img.width,img.height,'img999999'); 
+            let valid = img.width === width && img.height === height;
+            valid ? resolve() : reject();
+          };
+          img.src = _URL.createObjectURL(file);
+        }).then(
+          () => {
+            return file;
+          },
+          () => {
+            message.error(file.name + "图片尺寸不符合要求，请修改后重新上传！");
+            return Promise.reject();
+          }
+        );
+      };
 
       selectClass=(e)=>{
         const { cate } = this.state
@@ -112,7 +143,6 @@ class Uploadpic extends Component {
           const tailLayout = {
             wrapperCol: { offset: 8, span: 16 },
           };
-        console.log(msg,'kkkkkkkk'); 
         const reData = [
           { name:'家具',key:'jiaju' },
           { name:'卫浴',key:'weiyu' },
@@ -163,7 +193,7 @@ class Uploadpic extends Component {
                       multiple
                       // fileList={fileList}
                       // onPreview={this.handlePreview}
-                      // onChange={this.handleChange}
+                      onChange={this.handleChange}
                       beforeUpload={this.beforeUpload}
                     >
                       {fileList.length >= 4 ? null : uploadButton}

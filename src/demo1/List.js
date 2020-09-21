@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button,Table,Card  } from 'antd'
 import { connect } from 'react-redux'
+import {Redirect} from 'react-router-dom'
+
 @connect(
     (state) => state,
     (dispatch) => ({
@@ -13,10 +15,27 @@ class List extends Component {
     }
 
     componentDidMount() {
+      console.log(this.props,'kkkkkkkkkkkkkkkkkkkkkk');
+      const token = (this.props.location && this.props.location.query && this.props.location.query.token) || '';
+        if(token){
+            document.cookie = `token=${token};max-age=60`;//设置过期时间
+        }
         this.setState({
           activeTabKey:'all'
         })
       }
+
+      // 封装获取token的方法
+    getcookie = (keys) => {
+      let arr = document.cookie.split(";");
+  　　for(let i=0; i<arr.length; i++){
+          let carr=arr[i].split("=");
+  　　　　if(carr[0].trim() === keys){
+  　　　　    return carr[i];
+  　　　　}
+  　　}
+  　　return false;
+    }
 
     onTabChange=(activeTabKey)=>{
         const {dispatch} = this.props
@@ -80,6 +99,10 @@ class List extends Component {
             },
             
           ];
+          const token = this.getcookie('token');
+          if(!token){
+            return <Redirect to='/' />;
+          }
         return (
             <div>
                 <Card
