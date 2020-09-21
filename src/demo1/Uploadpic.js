@@ -11,8 +11,6 @@ import {
   } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 
-import Item from 'antd/lib/list/Item';
-
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -21,7 +19,7 @@ function getBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
-class Uploadpic extends Component {
+class Uploadpic extends Component { 
   state={
     fileList:[],
     previewVisible: false,
