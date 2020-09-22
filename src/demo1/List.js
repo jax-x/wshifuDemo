@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button,Table,Card  } from 'antd'
 import { connect } from 'react-redux'
 import {Redirect} from 'react-router-dom'
+import ajax from '../utils/request' 
 
 @connect(
     (state) => state,
@@ -22,6 +23,21 @@ class List extends Component {
         }
         this.setState({
           activeTabKey:'all'
+        })
+        
+        ajax({
+          url :'https://test-user-api.wanshifu.com/orders/normal/lists',
+          type:'POST',
+          data:{ 
+            startTime: '2020-03-26',
+            endTime: '2020-09-22',
+            subUserId: 'all',
+            time: 4,
+            orderStatus: 'all'
+          },
+          success : (data)=>{
+            console.log(data,'数据');
+          }
         })
       }
 

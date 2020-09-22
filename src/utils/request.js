@@ -16,11 +16,14 @@ function ajax(options){
         xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         xhr.send(params);
     }
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === 4 && xhr.status === 200){
-            options.success(xhr.responseText);
-        }
+    if (options.success) {
+        options.success(JSON.parse(xhr.responseText));
     }
+    // xhr.onreadystatechange = function(){
+    //     if(xhr.readyState === 4 && xhr.status === 200){
+    //         options.success(xhr.responseText);
+    //     }
+    // }
     function formsParams(data){
         var arr = [];
         for(var prop in data){

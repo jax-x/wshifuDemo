@@ -4,6 +4,7 @@ import { Input, Button, Form, } from 'antd'
 import { Link,Redirect } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import ajax from '../utils/request' 
+// import $axios from '../request'
 @connect(
   (state) => state,
   (dispatch) => ({ dispatch })
@@ -15,24 +16,26 @@ class Login extends Component {
     }
 
     componentDidMount(){
-        // ajax({
-        //     method:'get',
-        //     url:'http://192.168.1.7:3000/project/542/interface/api',
-        //     success: (res)=>{
-        //         console.log(res,'请求数据');
-        //     }
-        // })        
-            ajax({
-                url : "http://192.168.1.7:3000/project/542/interface/api",  // url---->地址
-                type : "POST",   // type ---> 请求方式
-                async : true,   // async----> 同步：false，异步：true 
-                success : function(data){   //返回接受信息
-                    console.log(data,'数据');
-                }
-
-                })
+        ajax({
+            url : "https://test-user-web-api.wanshifu.com/user/security/login",  // url---->地址
+            type : "POST",   // type ---> 请求方式
+            async : false,   // async----> 同步：false，异步：true 
+            // dataType : "jsonp",
+            data:{
+                principal:"andrewli",
+                password:'test@123456'
+            },
+            success : (data)=>{   //返回接受信息
+                console.log(data,'数据1');
             }
+        })
+        // const res = $axios.getRequest('/project/542/interface/api');
+        // res.then(data=>{
+        //     console.log(data,'数据');
+        // })
 
+    }
+ 
     // gotoLogin=()=>{
     //     const { formValue } = this.state
     //     if(formValue){
