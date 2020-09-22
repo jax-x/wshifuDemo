@@ -10,18 +10,18 @@ import reducer from './redux/reducer'
 import Router from './Router'
 var initState = {
   card: [
-    {name:'1',pro:'黑龙江',city:'哈尔滨'},
-    {name:'1',pro:'吉林',city:'长春'},
-    {name:'1',pro:'广东',city:'广州'},
-    {name:'1',pro:'内蒙古',city:'呼和浩特'},
-    {name:'1',pro:'河北',city:'石家庄'},
-    {name:'1',pro:'河南',city:'郑州'},
-    {name:'1',pro:'江西',city:'南昌'},
-    {name:'1',pro:'山西',city:'太原'},
-    {name:'1',pro:'陕西',city:'西安'},
-    {name:'1',pro:'浙江',city:'杭州'},
-    {name:'1',pro:'江苏',city:'南京'},
-    {name:'1',pro:'湖南',city:'长沙'}
+    {name:'安装',pro:'黑龙江',fee:20},
+    {name:'安装',pro:'吉林',fee:20},
+    {name:'安装',pro:'广东',fee:20},
+    {name:'安装',pro:'内蒙古',fee:20},
+    {name:'安装',pro:'河北',fee:20},
+    {name:'安装',pro:'河南',fee:20},
+    {name:'安装',pro:'江西',fee:20},
+    {name:'安装',pro:'山西',fee:20},
+    {name:'安装',pro:'陕西',fee:20},
+    {name:'安装',pro:'浙江',fee:20},
+    {name:'安装',pro:'江苏',fee:20},
+    {name:'安装',pro:'湖南',fee:20}
   ],
 }
 const store = createStore(reducer,initState)

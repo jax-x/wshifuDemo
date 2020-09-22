@@ -159,7 +159,7 @@ class Uploadpic extends Component {
                 <Descriptions title="详情信息">
                     <Descriptions.Item label="序号">{msg.name}</Descriptions.Item>
                     <Descriptions.Item label="省份">{msg.pro}</Descriptions.Item>
-                    <Descriptions.Item label="城市">{msg.city}</Descriptions.Item>
+                    <Descriptions.Item label="城市">{msg.fee}</Descriptions.Item>
                 </Descriptions> 
                
                 <Modal

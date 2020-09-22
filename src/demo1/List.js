@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component  } from 'react';
 import { Button,Table,Card  } from 'antd'
 import { connect } from 'react-redux'
 import {Redirect} from 'react-router-dom'
@@ -71,6 +71,7 @@ class List extends Component {
         })
       }
     render() {
+      // const [selectionType, setSelectionType] = useState('checkbox');
         const {
             activeTabKey
           } = this.state
@@ -86,9 +87,9 @@ class List extends Component {
               key: 'pro',
             },
             {
-              title: '省会',
-              dataIndex: 'city',
-              key: 'city',
+              title: '费用',
+              dataIndex: 'fee',
+              key: 'fee',
             },
             {
               title: '操作',
@@ -103,15 +104,15 @@ class List extends Component {
            const tabList = [
             {
               key: 'all',
-              tab: '全部',
+              tab: '安装',
             },
             {
               key: 'doing',
-              tab: '进行中',
+              tab: '维修',
             },
             {
               key: 'done',
-              tab: '结束',
+              tab: '送货到家并维修',
             },
             
           ];
@@ -119,6 +120,16 @@ class List extends Component {
           if(!token){
             return <Redirect to='/' />;
           }
+          const rowSelection = {
+            onChange: (selectedRowKeys, selectedRows) => {
+              console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+            },
+            getCheckboxProps: (record) => ({
+              disabled: record.name === 'Disabled User',
+              // Column configuration not to be checked
+              name: record.name,
+            }),
+          };
         return (
             <div>
                 <Card
@@ -131,6 +142,9 @@ class List extends Component {
                       dataSource={this.props.card}
                       columns={columns}
                       // loading={}
+                      rowSelection={{
+                        ...rowSelection,
+                      }}
                     />
                 </Card>
             </div>
