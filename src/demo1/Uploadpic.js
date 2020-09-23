@@ -7,7 +7,8 @@ import {
   Input,
   Select,
   Button,
-  message
+  message,
+  Steps
   } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -19,6 +20,8 @@ function getBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
+
+const { Step } = Steps;
 class Uploadpic extends Component { 
   state={
     fileList:[],
@@ -131,7 +134,7 @@ class Uploadpic extends Component {
 
           const layout = {
             labelCol: {
-              span: 8,
+              span: 1,
             },
             wrapperCol: {
               span: 16,
@@ -157,9 +160,9 @@ class Uploadpic extends Component {
         return (
             <div style={{ padding:30 }}>
                 <Descriptions title="详情信息">
-                    <Descriptions.Item label="序号">{msg.name}</Descriptions.Item>
-                    <Descriptions.Item label="省份">{msg.pro}</Descriptions.Item>
-                    <Descriptions.Item label="城市">{msg.fee}</Descriptions.Item>
+                    <Descriptions.Item label="类型">{msg.name}</Descriptions.Item>
+                    <Descriptions.Item label="地址">{msg.pro}</Descriptions.Item>
+                    <Descriptions.Item label="费用">{msg.fee}</Descriptions.Item>
                 </Descriptions> 
                
                 <Modal
@@ -272,6 +275,14 @@ class Uploadpic extends Component {
                     </Button>
                   </Form.Item>
                 </Form>
+                <Steps current={1}>
+                  <Step title="发布任务" />
+                  <Step title="师傅报价" />
+                  <Step title="指派师傅" />
+                  <Step title="托管服务费用" />
+                  <Step title="师傅工作" />
+                  <Step title="验收完成" />
+                </Steps>
             </div>
         );
     }

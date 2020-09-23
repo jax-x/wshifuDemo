@@ -77,12 +77,12 @@ class List extends Component {
           } = this.state
         const columns = [
             {
-              title: '序号',
+              title: '类型',
               dataIndex: 'name',
               key: 'name',
             },
             {
-              title: '省份',
+              title: '地址',
               dataIndex: 'pro',
               key: 'pro',
             },

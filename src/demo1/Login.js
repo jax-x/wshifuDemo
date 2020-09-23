@@ -33,7 +33,6 @@ class Login extends Component {
         // res.then(data=>{
         //     console.log(data,'数据');
         // })
-
     }
  
     // gotoLogin=()=>{
