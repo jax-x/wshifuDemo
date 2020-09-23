@@ -11,8 +11,11 @@ import ajax from '../utils/request'
 )
 
 class Login extends Component {
+
     state={
-      formValue:false
+
+       formValue:false
+
     }
 
     componentDidMount(){
@@ -46,31 +49,31 @@ class Login extends Component {
     // }
 
     gotoLogin = () => ({pathname:'/list',query:{token:'12345678'}});
-
     
     onFinish=(value)=>{
         console.log(value,'表单验证');
         if(value.username && value.password){
-            this.setState({ formValue:true })
+          this.setState({ formValue:true })
         }
         this.gotoLogin()
     }
 
     onFinishFailed=(errorInfo)=>{
-        console.log(errorInfo,'errorInfoerrorInfov');
         this.setState({ formValue:false })
         return <Redirect to='/' />
     }
+
     render() {
+
         const layout = {
             labelCol: { span: 8 },
             wrapperCol: { span: 16 },
-          };
-          const tailLayout = {
-            wrapperCol: { offset: 8, span: 16 }
-          };
+        };
 
-          
+        const tailLayout = {
+            wrapperCol: { offset: 8, span: 16 }
+        };
+
         return (
             <div style={{ padding: 30 }}>
                 <Form

@@ -275,7 +275,7 @@ class Uploadpic extends Component {
                     </Button>
                   </Form.Item>
                 </Form>
-                <Steps current={1}>
+                <Steps current={msg.status-1}>
                   <Step title="发布任务" />
                   <Step title="师傅报价" />
                   <Step title="指派师傅" />

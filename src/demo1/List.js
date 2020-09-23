@@ -19,7 +19,7 @@ class List extends Component {
       console.log(this.props,'kkkkkkkkkkkkkkkkkkkkkk');
       const token = (this.props.location && this.props.location.query && this.props.location.query.token) || '';
         if(token){
-            document.cookie = `token=${token};max-age=60`;//设置过期时间
+            document.cookie = `token=${token};max-age=300`;//设置过期时间
         }
         this.setState({
           activeTabKey:'all'
@@ -90,6 +90,22 @@ class List extends Component {
               title: '费用',
               dataIndex: 'fee',
               key: 'fee',
+            },
+            {
+              title: '状态',
+              dataIndex: 'status',
+              key: 'status',
+              render:text=>{
+                if(text===1){
+                  return '发布任务'
+                }
+                if(text===2){
+                  return '师傅报价'
+                }
+                if(text===3){
+                  return '指派任务'
+                }
+              }
             },
             {
               title: '操作',
