@@ -29,7 +29,7 @@ class Login extends Component {
                 password:'test@123456'
             },
             success : (data)=>{   //返回接受信息
-                console.log(data,'数据1');
+                console.log(data,'登陆接口');
             }
         })
         // const res = $axios.getRequest('/project/542/interface/api');
@@ -59,6 +59,7 @@ class Login extends Component {
     }
 
     onFinishFailed=(errorInfo)=>{
+        console.log('验证失败');
         this.setState({ formValue:false })
         return <Redirect to='/' />
     }

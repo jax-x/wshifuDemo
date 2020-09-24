@@ -16,7 +16,6 @@ class List extends Component {
     }
 
     componentDidMount() {
-      console.log(this.props,'kkkkkkkkkkkkkkkkkkkkkk');
       const token = (this.props.location && this.props.location.query && this.props.location.query.token) || '';
         if(token){
             document.cookie = `token=${token};max-age=300`;//设置过期时间
@@ -36,7 +35,7 @@ class List extends Component {
             orderStatus: 'all'
           },
           success : (data)=>{
-            console.log(data,'数据');
+            console.log(data,'list');
           }
         })
       }
@@ -103,7 +102,7 @@ class List extends Component {
                   return '师傅报价'
                 }
                 if(text===3){
-                  return '指派任务'
+                  return '指派师傅'
                 }
               }
             },
