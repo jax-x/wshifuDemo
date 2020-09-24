@@ -20,9 +20,7 @@ class List extends Component {
         if(token){
             document.cookie = `token=${token};max-age=300`;//设置过期时间
         }
-        this.setState({
-          activeTabKey:'all'
-        })
+        this.setState({ activeTabKey:'all' })
         
         ajax({
           url :'https://test-user-api.wanshifu.com/orders/normal/lists',

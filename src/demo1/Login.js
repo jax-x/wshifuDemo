@@ -32,16 +32,14 @@ class Login extends Component {
                 console.log(data,'登陆接口');
             }
         })
-        // const res = $axios.getRequest('/project/542/interface/api');
-        // res.then(data=>{
-        //     console.log(data,'数据');
-        // })
+        const getC =  document.cookie
+        console.log(getC,'看看cookie');
     }
  
     // gotoLogin=()=>{
     //     const { formValue } = this.state
     //     if(formValue){
-    //         return ( 
+    //         return (
     //             <Link to={{ pathname:'/list',query:{token:'123123'}}}>登录</Link>
     //          )
     //     }
@@ -54,6 +52,7 @@ class Login extends Component {
         console.log(value,'表单验证');
         if(value.username && value.password){
           this.setState({ formValue:true })
+          
         }
         this.gotoLogin()
     }
