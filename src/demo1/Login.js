@@ -19,21 +19,21 @@ class Login extends Component {
     }
 
     componentDidMount(){
-        ajax({
-            url : "https://test-user-web-api.wanshifu.com/user/security/login",  // url---->地址
-            type : "POST",   // type ---> 请求方式
-            async : false,   // async----> 同步：false，异步：true 
-            // dataType : "jsonp",
-            data:{
-                principal:"andrewli",
-                password:'test@123456'
-            },
-            success : (data)=>{   //返回接受信息
-                console.log(data,'登陆接口');
-            }
-        })
-        const getC =  document.cookie
-        console.log(getC,'看看cookie');
+        // ajax({
+        //     url : "https://test-user-web-api.wanshifu.com/user/security/login",  // url---->地址
+        //     type : "POST",   // type ---> 请求方式
+        //     async : false,   // async----> 同步：false，异步：true 
+        //     // dataType : "jsonp",
+        //     data:{
+        //         principal:"andrewli",
+        //         password:'test@123456'
+        //     },
+        //     success : (data)=>{   //返回接受信息
+        //         console.log(data,'登陆接口');
+        //     }
+        // })
+        // const getC =  document.cookie
+        // console.log(getC,'cookie');
     }
  
     // gotoLogin=()=>{
