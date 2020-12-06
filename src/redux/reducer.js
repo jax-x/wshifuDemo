@@ -36,6 +36,7 @@ function reducer(state, action) {
           {name:'维修',pro:'江苏',fee:30,status:2},
           {name:'维修',pro:'湖南',fee:30,status:2}
         ],
+        dddo:{do:'0000'},
         dialog: {
           status: true
         }

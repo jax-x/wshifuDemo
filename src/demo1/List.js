@@ -56,6 +56,7 @@ class List extends Component {
         dispatch({
           type:activeTabKey,
         })
+        console.log(this.props,'redux');
       }
 
       clickDetail=(e)=>{
